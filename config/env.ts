@@ -7,9 +7,7 @@ export type TestEnv = (typeof ENVIRONMENTS)[number];
 function resolveTestEnv(): TestEnv {
   const value = process.env.TEST_ENV ?? 'dev';
   if (!(ENVIRONMENTS as readonly string[]).includes(value)) {
-    throw new Error(
-      `Invalid TEST_ENV "${value}". Expected one of: ${ENVIRONMENTS.join(', ')}`,
-    );
+    throw new Error(`Invalid TEST_ENV "${value}". Expected one of: ${ENVIRONMENTS.join(', ')}`);
   }
   return value as TestEnv;
 }
